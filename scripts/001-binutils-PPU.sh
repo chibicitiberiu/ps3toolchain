@@ -1,6 +1,12 @@
 #!/bin/sh -e
 # binutils-PPU.sh by Naomi Peori (naomi@peori.ca)
 
+## Check if binutils is already installed
+if [ -f "$PS3DEV/ppu/bin/powerpc64-ps3-elf-as" ] && [ -f "$PS3DEV/ppu/bin/powerpc64-ps3-elf-ld" ]; then
+    echo "binutils-PPU already installed, skipping..."
+    exit 0
+fi
+
 BINUTILS="binutils-2.42"
 
 if [ ! -d ${BINUTILS} ]; then

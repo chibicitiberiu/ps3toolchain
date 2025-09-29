@@ -1,6 +1,12 @@
 #!/bin/bash -e
 # gcc-newlib-PPU.sh by Naomi Peori (naomi@peori.ca)
 
+## Check if GCC and newlib are already installed
+if [ -f "$PS3DEV/ppu/bin/powerpc64-ps3-elf-gcc" ] && [ -f "$PS3DEV/ppu/powerpc64-ps3-elf/lib/libc.a" ]; then
+    echo "GCC and newlib-PPU already installed, skipping..."
+    exit 0
+fi
+
 GCC="gcc-13.2.0"
 NEWLIB="newlib-1.20.0"
 

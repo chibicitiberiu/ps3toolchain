@@ -1,6 +1,12 @@
 #!/bin/sh -e
 # gcc-newlib-SPU.sh by Naomi Peori (naomi@peori.ca)
 
+## Check if GCC-SPU is already installed
+if [ -f "$PS3DEV/spu/bin/spu-gcc" ]; then
+    echo "GCC-SPU already installed, skipping..."
+    exit 0
+fi
+
 GCC="gcc-9.5.0"
 NEWLIB="newlib-1.20.0"
 

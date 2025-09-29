@@ -1,6 +1,12 @@
 #!/bin/sh -e
 # binutils-SPU.sh by Naomi Peori (naomi@peori.ca)
 
+## Check if binutils-SPU is already installed
+if [ -f "$PS3DEV/spu/bin/spu-as" ] && [ -f "$PS3DEV/spu/bin/spu-ld" ]; then
+    echo "binutils-SPU already installed, skipping..."
+    exit 0
+fi
+
 BINUTILS="binutils-2.22"
 
 if [ ! -d ${BINUTILS} ]; then
