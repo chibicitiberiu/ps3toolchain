@@ -1,6 +1,12 @@
 #!/bin/sh -e
 # gdb-PPU.sh by Naomi Peori (naomi@peori.ca)
 
+# Check if GDB is already built and installed
+if [ -f "$PS3DEV/ppu/bin/powerpc64-ps3-elf-gdb" ]; then
+  echo "GDB PPU already built and installed, skipping..."
+  exit 0
+fi
+
 GDB="gdb-8.3.1"
 
 if [ ! -d ${GDB} ]; then

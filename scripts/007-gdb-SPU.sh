@@ -1,6 +1,12 @@
 #!/bin/sh -e
 # gdb-SPU.sh by Naomi Peori (naomi@peori.ca)
 
+# Check if GDB is already built and installed
+if [ -f "$PS3DEV/spu/bin/spu-gdb" ]; then
+  echo "GDB SPU already built and installed, skipping..."
+  exit 0
+fi
+
 GDB="gdb-8.3.1"
 
 if [ ! -d ${GDB} ]; then
