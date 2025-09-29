@@ -6,11 +6,13 @@ GDB="gdb-8.3.1"
 if [ ! -d ${GDB} ]; then
 
   ## Download the source code.
-  if [ ! -f ${GDB}.tar.xz ]; then wget --continue https://ftp.gnu.org/gnu/gdb/${GDB}.tar.xz; fi
+  GDB_MIRROR="${GDB_MIRROR:-https://ftp.gnu.org/gnu/gdb}"
+  CONFIG_MIRROR="${CONFIG_MIRROR:-https://git.savannah.gnu.org/cgit/config.git/plain}"
+  if [ ! -f ${GDB}.tar.xz ]; then wget --continue ${GDB_MIRROR}/${GDB}.tar.xz; fi
 
   ## Download an up-to-date config.guess and config.sub
-  if [ ! -f config.guess ]; then wget --continue https://git.savannah.gnu.org/cgit/config.git/plain/config.guess; fi
-  if [ ! -f config.sub ]; then wget --continue https://git.savannah.gnu.org/cgit/config.git/plain/config.sub; fi
+  if [ ! -f config.guess ]; then wget --continue ${CONFIG_MIRROR}/config.guess; fi
+  if [ ! -f config.sub ]; then wget --continue ${CONFIG_MIRROR}/config.sub; fi
 
   ## Unpack the source code.
   tar xfvJ ${GDB}.tar.xz

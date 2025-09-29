@@ -13,8 +13,10 @@ NEWLIB="newlib-1.20.0"
 if [ ! -d ${GCC} ]; then
 
   ## Download the source code.
-  if [ ! -f ${GCC}.tar.xz ]; then wget --continue https://ftp.gnu.org/gnu/gcc/${GCC}/${GCC}.tar.xz; fi
-  if [ ! -f ${NEWLIB}.tar.gz ]; then wget --continue https://sourceware.org/pub/newlib/${NEWLIB}.tar.gz; fi
+  GCC_MIRROR="${GCC_MIRROR:-https://ftp.gnu.org/gnu/gcc}"
+  NEWLIB_MIRROR="${NEWLIB_MIRROR:-https://sourceware.org/pub/newlib}"
+  if [ ! -f ${GCC}.tar.xz ]; then wget --continue ${GCC_MIRROR}/${GCC}/${GCC}.tar.xz; fi
+  if [ ! -f ${NEWLIB}.tar.gz ]; then wget --continue ${NEWLIB_MIRROR}/${NEWLIB}.tar.gz; fi
 
   ## Unpack the source code.
   rm -Rf ${GCC} && tar xfvJ ${GCC}.tar.xz
